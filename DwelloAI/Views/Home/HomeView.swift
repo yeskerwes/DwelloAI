@@ -14,119 +14,145 @@ struct HomeView: View {
     )
     
     var body: some View {
-        ZStack {
-            Color(.systemGray6)
-                .ignoresSafeArea()
-            
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: 0) {
-                    headerSection
-                    
-                    searchCard
-                        .offset(y: -38)
-                        .padding(.horizontal, 15)
-                        .padding(.bottom, -10)
-                    
-                    offerBanner
-                        .padding(.horizontal, 15)
-                        .padding(.top, 8)
-                    
-                    hotDealsSection
-                        .padding(.top, 26)
-                    
-                    Spacer(minLength: 120)
+        NavigationStack {
+            ZStack {
+                Color(.systemGray6)
+                    .ignoresSafeArea()
+                
+                ScrollView(showsIndicators: false) {
+                    VStack(spacing: 0) {
+                        headerSection
+                        
+                        searchCard
+                            .offset(y: -150)
+                            .padding(.horizontal, 15)
+                            .padding(.bottom, -150)
+                        
+                        offerBanner
+                            .padding(.horizontal, 15)
+                            .padding(.top, 20)
+                        
+                        hotDealsSection
+                            .padding(.top, 20)
+                        
+                        Spacer(minLength: 120)
+                    }
                 }
+                .ignoresSafeArea(edges: .top)
             }
-            .ignoresSafeArea(edges: .top)
-        }
-        .onAppear {
-            viewModel.loadProperties()
+            .onAppear {
+                viewModel.loadProperties()
+            }
         }
     }
 }
-
-// MARK: - Header
 
 private extension HomeView {
     var headerSection: some View {
-        GeometryReader { geo in
-            ZStack(alignment: .bottomLeading) {
-                Image("home-header")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: geo.size.width, height: 330)
-                    .clipped()
-                    .overlay(
-                        LinearGradient(
-                            colors: [
-                                Color("AccentColor").opacity(0.92),
-                                Color("AccentColor").opacity(0.82),
-                                Color("AccentColor").opacity(0.65)
-                            ],
-                            startPoint: .top,
-                            endPoint: .bottom
-                        )
+        ZStack(alignment: .topLeading) {
+            Image("home-header")
+                .resizable()
+                .scaledToFill()
+                .frame(height: 300)
+                .frame(maxWidth: .infinity)
+                .clipped()
+                .overlay(
+                    Color("AccentColor")
+                        .opacity(0.88)
+                )
+                .clipShape(
+                    UnevenRoundedRectangle(
+                        topLeadingRadius: 0,
+                        bottomLeadingRadius: 28,
+                        bottomTrailingRadius: 28,
+                        topTrailingRadius: 0
                     )
+                )
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Hello Bakdaulet!")
+                    .font(.custom("Poppins-Medium", size: 16))
+                    .foregroundStyle(.orange)
                 
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Hello Bakdaulet!")
-                        .font(.custom("Poppins-Medium", size: 18))
-                        .foregroundStyle(Color.orange)
-                    
-                    Text("Find your dream Home")
-                        .font(.custom("Poppins-SemiBold", size: 30))
-                        .foregroundStyle(.white)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.8)
-                }
-                .padding(.horizontal, 15)
-                .padding(.bottom, 78)
+                Text("Find your dream Home")
+                    .font(.custom("Poppins-SemiBold", size: 22))
+                    .foregroundStyle(.white)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.8)
             }
-            .frame(width: geo.size.width, height: 330)
+            .padding(.horizontal, 18)
+            .padding(.top, 80)
         }
-        .frame(height: 330)
+        .frame(height: 300)
     }
 }
-
-// MARK: - Search Card
 
 private extension HomeView {
     var searchCard: some View {
         VStack(spacing: 0) {
             modePicker
             
-            VStack(spacing: 14) {
+            VStack(spacing: 12) {
                 filterField(
                     icon: "mappin.circle",
-                    title: "Select region, City, Country"
+                    title: "Select region, City, Country",
+                    height: 60,
+                    iconSize: 24,
+                    textSize: 15
                 )
                 
-                HStack(spacing: 10) {
-                    filterField(icon: "tag", title: "Price")
-                    filterField(icon: "door.left.hand.open", title: "Rooms")
-                    filterField(icon: "square.dashed", title: "Square")
+                HStack(spacing: 7) {
+                    filterField(
+                        icon: "tag",
+                        title: "Price",
+                        height: 38,
+                        iconSize: 16,
+                        textSize: 14
+                    )
+                    
+                    filterField(
+                        icon: "door.left.hand.open",
+                        title: "Rooms",
+                        height: 38,
+                        iconSize: 16,
+                        textSize: 14
+                    )
+                    
+                    filterField(
+                        icon: "square.dashed",
+                        title: "Square",
+                        height: 38,
+                        iconSize: 16,
+                        textSize: 14
+                    )
                 }
                 
-                HStack(spacing: 10) {
-                    filterField(icon: "building.2", title: "Apartments")
+                HStack(spacing: 7) {
+                    filterField(
+                        icon: "building.2",
+                        title: "Apartments",
+                        height: 38,
+                        iconSize: 16,
+                        textSize: 14
+                    )
                     
                     Button {
                         
                     } label: {
-                        HStack(spacing: 10) {
+                        HStack(spacing: 8) {
                             Image(systemName: "line.3.horizontal.decrease")
-                                .font(.system(size: 18, weight: .medium))
+                                .font(.system(size: 14, weight: .medium))
                             
                             Text("Advanced filter")
                                 .font(.custom("Poppins-Medium", size: 12))
                                 .lineLimit(1)
-                                .minimumScaleFactor(0.8)
+                                .minimumScaleFactor(0.75)
                         }
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
-                        .frame(height: 50)
+                        .frame(height: 38)
                         .background(Color("AccentColor"))
-                        .clipShape(RoundedRectangle(cornerRadius: 14))
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
                 }
                 
@@ -137,19 +163,19 @@ private extension HomeView {
                         .font(.custom("Poppins-Medium", size: 16))
                         .foregroundStyle(.black)
                         .frame(maxWidth: .infinity)
-                        .frame(height: 64)
-                        .background(Color.orange.opacity(0.85))
-                        .clipShape(RoundedRectangle(cornerRadius: 30))
+                        .frame(height: 56)
+                        .background(Color.orange)
+                        .clipShape(RoundedRectangle(cornerRadius: 24))
                 }
-                .padding(.top, 18)
+                .padding(.top, 14)
             }
-            .padding(.horizontal, 16)
-            .padding(.top, 26)
-            .padding(.bottom, 28)
+            .padding(.horizontal, 15)
+            .padding(.top, 24)
+            .padding(.bottom, 24)
         }
         .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 34))
-        .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 6)
+        .clipShape(RoundedRectangle(cornerRadius: 28))
+        .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 4)
     }
     
     var modePicker: some View {
@@ -158,22 +184,22 @@ private extension HomeView {
                 modeButton(.buy)
                 modeButton(.rent)
             }
-            .frame(height: 60)
+            .frame(height: 54)
             
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
                     Rectangle()
                         .fill(Color.gray.opacity(0.25))
-                        .frame(height: 1.5)
+                        .frame(height: 1)
                     
                     Rectangle()
                         .fill(Color("AccentColor"))
-                        .frame(width: geo.size.width / 2, height: 3)
+                        .frame(width: geo.size.width / 2, height: 2)
                         .offset(x: selectedMode == .buy ? 0 : geo.size.width / 2)
                         .animation(.easeInOut(duration: 0.25), value: selectedMode)
                 }
             }
-            .frame(height: 3)
+            .frame(height: 2)
         }
     }
     
@@ -182,41 +208,45 @@ private extension HomeView {
             selectedMode = mode
         } label: {
             Text(mode.title)
-                .font(.custom("Poppins-Medium", size: 16))
-                .foregroundStyle(.black.opacity(0.85))
+                .font(.custom("Poppins-Medium", size: 20))
+                .foregroundStyle(.black.opacity(0.9))
                 .frame(maxWidth: .infinity)
-                .frame(height: 60)
+                .frame(height: 54)
         }
     }
     
-    func filterField(icon: String, title: String) -> some View {
+    func filterField(
+        icon: String,
+        title: String,
+        height: CGFloat,
+        iconSize: CGFloat,
+        textSize: CGFloat
+    ) -> some View {
         HStack(spacing: 10) {
             Image(systemName: icon)
-                .font(.system(size: 20, weight: .medium))
+                .font(.system(size: iconSize, weight: .medium))
                 .foregroundStyle(.gray)
                 .frame(width: 24)
             
             Text(title)
-                .font(.custom("Poppins-Medium", size: 14))
+                .font(.custom("Poppins-Medium", size: textSize))
                 .foregroundStyle(.gray)
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
             
             Spacer(minLength: 0)
         }
-        .padding(.horizontal, 14)
+        .padding(.horizontal, 12)
         .frame(maxWidth: .infinity)
-        .frame(height: 54)
+        .frame(height: height)
         .background(Color.white)
         .overlay(
-            RoundedRectangle(cornerRadius: 14)
-                .stroke(Color.gray.opacity(0.3), lineWidth: 1.5)
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
         )
-        .clipShape(RoundedRectangle(cornerRadius: 14))
+        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }
-
-// MARK: - Offer Banner
 
 private extension HomeView {
     var offerBanner: some View {
@@ -262,8 +292,6 @@ private extension HomeView {
         .frame(height: 150)
     }
 }
-
-// MARK: - Hot Deals
 
 private extension HomeView {
     var hotDealsSection: some View {

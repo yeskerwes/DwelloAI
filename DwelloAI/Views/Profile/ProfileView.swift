@@ -8,14 +8,25 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @StateObject private var authViewModel = AuthViewModel(
+        authService: MockAuthService()
+    )
+    
     var body: some View {
         NavigationStack {
-            VStack {
-                Text("Profile Screen")
-                    .font(.title)
+            Group {
+                if authViewModel.isLoggedIn {
+                    UserProfileView(authViewModel: authViewModel)
+                } else {
+                    LoginRequiredView(authViewModel: authViewModel)
+                }
             }
             .navigationTitle("Profile")
-            .padding(.bottom, 90)
+            .navigationBarTitleDisplayMode(.large)
         }
     }
+}
+
+#Preview {
+    ProfileView()
 }

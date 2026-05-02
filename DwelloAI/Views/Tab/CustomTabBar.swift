@@ -21,11 +21,12 @@ struct CustomTabBar: View {
             tabButton(.chat)
             tabButton(.profile)
         }
-        .padding(.horizontal, 20)
-        .padding(.top, 14)
-        .padding(.bottom, 22)
+        .frame(maxWidth: .infinity)
+        .frame(height: 78)
+        .padding(.horizontal, 12)
         .background(
             Color.white
+                .ignoresSafeArea(edges: .bottom)
                 .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: -4)
         )
     }
@@ -34,22 +35,21 @@ struct CustomTabBar: View {
         Button {
             selectedTab = tab
         } label: {
-            VStack(spacing: 6) {
-                ZStack {
-                    Image(systemName: selectedTab == tab ? tab.selectedIcon : tab.icon)
-                        .font(.system(size: iconSize(for: tab), weight: .medium))
-                        .symbolRenderingMode(.monochrome)
-                        .frame(width: 32, height: 32)
-                }
-                .frame(width: 36, height: 36)
+            VStack(spacing: 4) {
+                Image(systemName: selectedTab == tab ? tab.selectedIcon : tab.icon)
+                    .font(.system(size: iconSize(for: tab), weight: .medium))
+                    .symbolRenderingMode(.monochrome)
+                    .frame(width: 34, height: 34)
                 
                 Text(tab.title)
                     .font(.custom("Poppins-Medium", size: 12))
                     .lineLimit(1)
             }
             .foregroundStyle(selectedTab == tab ? accentColor : inactiveColor)
-            .frame(maxWidth: .infinity)
+            .frame(width: 64, height: 58)
         }
+        .buttonStyle(.plain)
+        .frame(maxWidth: .infinity)
     }
     
     private var addButton: some View {
@@ -59,15 +59,17 @@ struct CustomTabBar: View {
             ZStack {
                 Circle()
                     .fill(accentColor)
-                    .frame(width: 70, height: 70)
+                    .frame(width: 58, height: 58)
                 
                 Image(systemName: "plus")
-                    .font(.system(size: 34, weight: .medium))
+                    .font(.system(size: 28, weight: .medium))
                     .foregroundStyle(.white)
             }
-            .frame(maxWidth: .infinity)
+            .frame(width: 64, height: 58)
         }
-        .offset(y: -14)
+        .buttonStyle(.plain)
+        .frame(maxWidth: .infinity)
+        .offset(y: -4)
     }
     
     private func iconSize(for tab: TabItem) -> CGFloat {
@@ -81,7 +83,7 @@ struct CustomTabBar: View {
         case .profile:
             return 31
         case .add:
-            return 34
+            return 28
         }
     }
 }
