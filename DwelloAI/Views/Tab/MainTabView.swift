@@ -30,7 +30,7 @@ struct MainTabView: View {
         case .add:
             AddPropertyView()
         case .chat:
-            ChatView()
+            ChatsView()
         case .profile:
             ProfileView()
         }

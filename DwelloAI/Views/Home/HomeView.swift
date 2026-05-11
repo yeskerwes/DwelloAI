@@ -8,33 +8,46 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var selectedMode: ListingMode = .buy
+    @State private var filters = HomeFilterState()
+    @State private var activeFilterSheet: HomeFilterSheetType? = nil
+
+    @State private var searchResults: [Property] = []
+    @State private var showSearchResults = false
+
     @StateObject private var viewModel = PropertyListViewModel(
         propertyService: LocalPropertyService()
     )
-    
+
     var body: some View {
         NavigationStack {
             ZStack {
                 Color(.systemGray6)
                     .ignoresSafeArea()
-                
+
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 0) {
                         headerSection
-                        
-                        searchCard
-                            .offset(y: -150)
-                            .padding(.horizontal, 15)
-                            .padding(.bottom, -150)
-                        
+
+                        HomeSearchCard(
+                            filters: $filters,
+                            onFilterTap: { sheetType in
+                                activeFilterSheet = sheetType
+                            },
+                            onSearchTap: {
+                                searchProperties()
+                            }
+                        )
+                        .offset(y: -150)
+                        .padding(.horizontal, 15)
+                        .padding(.bottom, -150)
+
                         offerBanner
                             .padding(.horizontal, 15)
                             .padding(.top, 20)
-                        
+
                         hotDealsSection
                             .padding(.top, 20)
-                        
+
                         Spacer(minLength: 120)
                     }
                 }
@@ -42,6 +55,15 @@ struct HomeView: View {
             }
             .onAppear {
                 viewModel.loadProperties()
+            }
+            .sheet(item: $activeFilterSheet) { sheetType in
+                FilterBottomSheet(
+                    type: sheetType,
+                    filters: $filters
+                )
+            }
+            .navigationDestination(isPresented: $showSearchResults) {
+                SearchResultsView(properties: searchResults)
             }
         }
     }
@@ -68,12 +90,12 @@ private extension HomeView {
                         topTrailingRadius: 0
                     )
                 )
-            
+
             VStack(alignment: .leading, spacing: 4) {
                 Text("Hello Bakdaulet!")
                     .font(.custom("Poppins-Medium", size: 16))
                     .foregroundStyle(.orange)
-                
+
                 Text("Find your dream Home")
                     .font(.custom("Poppins-SemiBold", size: 22))
                     .foregroundStyle(.white)
@@ -84,167 +106,6 @@ private extension HomeView {
             .padding(.top, 80)
         }
         .frame(height: 300)
-    }
-}
-
-private extension HomeView {
-    var searchCard: some View {
-        VStack(spacing: 0) {
-            modePicker
-            
-            VStack(spacing: 12) {
-                filterField(
-                    icon: "mappin.circle",
-                    title: "Select region, City, Country",
-                    height: 60,
-                    iconSize: 24,
-                    textSize: 15
-                )
-                
-                HStack(spacing: 7) {
-                    filterField(
-                        icon: "tag",
-                        title: "Price",
-                        height: 38,
-                        iconSize: 16,
-                        textSize: 14
-                    )
-                    
-                    filterField(
-                        icon: "door.left.hand.open",
-                        title: "Rooms",
-                        height: 38,
-                        iconSize: 16,
-                        textSize: 14
-                    )
-                    
-                    filterField(
-                        icon: "square.dashed",
-                        title: "Square",
-                        height: 38,
-                        iconSize: 16,
-                        textSize: 14
-                    )
-                }
-                
-                HStack(spacing: 7) {
-                    filterField(
-                        icon: "building.2",
-                        title: "Apartments",
-                        height: 38,
-                        iconSize: 16,
-                        textSize: 14
-                    )
-                    
-                    Button {
-                        
-                    } label: {
-                        HStack(spacing: 8) {
-                            Image(systemName: "line.3.horizontal.decrease")
-                                .font(.system(size: 14, weight: .medium))
-                            
-                            Text("Advanced filter")
-                                .font(.custom("Poppins-Medium", size: 12))
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.75)
-                        }
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 38)
-                        .background(Color("AccentColor"))
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                    }
-                }
-                
-                Button {
-                    
-                } label: {
-                    Text("Search")
-                        .font(.custom("Poppins-Medium", size: 16))
-                        .foregroundStyle(.black)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 56)
-                        .background(Color.orange)
-                        .clipShape(RoundedRectangle(cornerRadius: 24))
-                }
-                .padding(.top, 14)
-            }
-            .padding(.horizontal, 15)
-            .padding(.top, 24)
-            .padding(.bottom, 24)
-        }
-        .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 28))
-        .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 4)
-    }
-    
-    var modePicker: some View {
-        VStack(spacing: 0) {
-            HStack(spacing: 0) {
-                modeButton(.buy)
-                modeButton(.rent)
-            }
-            .frame(height: 54)
-            
-            GeometryReader { geo in
-                ZStack(alignment: .leading) {
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.25))
-                        .frame(height: 1)
-                    
-                    Rectangle()
-                        .fill(Color("AccentColor"))
-                        .frame(width: geo.size.width / 2, height: 2)
-                        .offset(x: selectedMode == .buy ? 0 : geo.size.width / 2)
-                        .animation(.easeInOut(duration: 0.25), value: selectedMode)
-                }
-            }
-            .frame(height: 2)
-        }
-    }
-    
-    func modeButton(_ mode: ListingMode) -> some View {
-        Button {
-            selectedMode = mode
-        } label: {
-            Text(mode.title)
-                .font(.custom("Poppins-Medium", size: 20))
-                .foregroundStyle(.black.opacity(0.9))
-                .frame(maxWidth: .infinity)
-                .frame(height: 54)
-        }
-    }
-    
-    func filterField(
-        icon: String,
-        title: String,
-        height: CGFloat,
-        iconSize: CGFloat,
-        textSize: CGFloat
-    ) -> some View {
-        HStack(spacing: 10) {
-            Image(systemName: icon)
-                .font(.system(size: iconSize, weight: .medium))
-                .foregroundStyle(.gray)
-                .frame(width: 24)
-            
-            Text(title)
-                .font(.custom("Poppins-Medium", size: textSize))
-                .foregroundStyle(.gray)
-                .lineLimit(1)
-                .minimumScaleFactor(0.7)
-            
-            Spacer(minLength: 0)
-        }
-        .padding(.horizontal, 12)
-        .frame(maxWidth: .infinity)
-        .frame(height: height)
-        .background(Color.white)
-        .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(Color.gray.opacity(0.3), lineWidth: 1.2)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }
 
@@ -261,7 +122,7 @@ private extension HomeView {
                         Color("AccentColor")
                             .opacity(0.78)
                     )
-                
+
                 HStack {
                     VStack(alignment: .leading, spacing: 6) {
                         Text("New apartments")
@@ -269,7 +130,7 @@ private extension HomeView {
                             .foregroundStyle(.white)
                             .lineLimit(1)
                             .minimumScaleFactor(0.8)
-                        
+
                         Text("with special offers, mortgages,\nand flexible purchase options")
                             .font(.custom("Poppins-Regular", size: 14))
                             .foregroundStyle(Color.orange)
@@ -277,9 +138,9 @@ private extension HomeView {
                             .lineLimit(2)
                             .minimumScaleFactor(0.8)
                     }
-                    
+
                     Spacer()
-                    
+
                     Image(systemName: "chevron.right")
                         .font(.system(size: 22, weight: .semibold))
                         .foregroundStyle(.white)
@@ -300,7 +161,7 @@ private extension HomeView {
                 .font(.custom("Poppins-SemiBold", size: 26))
                 .foregroundStyle(.black.opacity(0.85))
                 .padding(.horizontal, 15)
-            
+
             if viewModel.isLoading {
                 ProgressView()
                     .frame(maxWidth: .infinity)
@@ -313,8 +174,13 @@ private extension HomeView {
             } else {
                 LazyVStack(spacing: 16) {
                     ForEach(viewModel.hotDeals) { property in
-                        PropertyDealCardView(property: property)
-                            .padding(.horizontal, 15)
+                        NavigationLink {
+                            PropertyDetailView(property: property)
+                        } label: {
+                            PropertyDealCardView(property: property)
+                                .padding(.horizontal, 15)
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
             }
@@ -322,17 +188,65 @@ private extension HomeView {
     }
 }
 
-enum ListingMode {
-    case buy
-    case rent
-    
-    var title: String {
-        switch self {
-        case .buy:
-            return "Buy"
-        case .rent:
-            return "Rent"
+private extension HomeView {
+    func searchProperties() {
+        let result = viewModel.properties.filter { property in
+            let matchesMode: Bool
+
+            switch filters.selectedMode {
+            case .buy:
+                matchesMode = property.listingType == .sale
+            case .rent:
+                matchesMode = property.listingType == .rent
+            }
+
+            let matchesCity: Bool
+            if let selectedCity = filters.selectedCity {
+                matchesCity = property.city == selectedCity
+            } else {
+                matchesCity = true
+            }
+
+            let matchesPrice: Bool
+            if let selectedMaxPrice = filters.selectedMaxPrice {
+                matchesPrice = property.price <= selectedMaxPrice
+            } else {
+                matchesPrice = true
+            }
+
+            let matchesRooms: Bool
+            if let selectedRooms = filters.selectedRooms {
+                matchesRooms = property.rooms == selectedRooms
+            } else {
+                matchesRooms = true
+            }
+
+            let matchesArea: Bool
+            if let selectedMinArea = filters.selectedMinArea {
+                matchesArea = property.area >= selectedMinArea
+            } else {
+                matchesArea = true
+            }
+
+            let matchesPropertyType: Bool
+            if let selectedPropertyType = filters.selectedPropertyType {
+                matchesPropertyType =
+                property.propertyType.rawValue.lowercased() ==
+                selectedPropertyType.rawValue.lowercased()
+            } else {
+                matchesPropertyType = true
+            }
+
+            return matchesMode &&
+            matchesCity &&
+            matchesPrice &&
+            matchesRooms &&
+            matchesArea &&
+            matchesPropertyType
         }
+
+        searchResults = result
+        showSearchResults = true
     }
 }
 
