@@ -147,7 +147,7 @@ private extension HomeSearchCard {
             filters.selectedMode = mode
             filters.selectedMaxPrice = nil
         } label: {
-            Text(mode.title)
+            Text(LocalizedStringKey(mode.title))
                 .font(.custom("Poppins-Medium", size: 20))
                 .foregroundStyle(filters.selectedMode == mode ? .black : .gray)
                 .frame(maxWidth: .infinity)
@@ -171,7 +171,7 @@ private extension HomeSearchCard {
                     .foregroundStyle(.gray)
                     .frame(width: 24)
 
-                Text(title)
+                Text(LocalizedStringKey(title))
                     .font(.custom("Poppins-Medium", size: textSize))
                     .foregroundStyle(.gray)
                     .lineLimit(1)

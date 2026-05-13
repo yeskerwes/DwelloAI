@@ -32,17 +32,6 @@ enum MockChats {
             avatarSystemName: "person.fill"
         ),
         ChatThread(
-            name: "Nurlan Agent",
-            subtitle: "Real estate agent",
-            lastMessage: "I can show you 3 apartments in Almaty today.",
-            time: "09:15",
-            unreadCount: 0,
-            isPinned: false,
-            participantType: .agent,
-            avatarImageName: nil,
-            avatarSystemName: "person.crop.circle.badge.checkmark"
-        ),
-        ChatThread(
             name: "Madina",
             subtitle: "House owner",
             lastMessage: "The price is negotiable.",

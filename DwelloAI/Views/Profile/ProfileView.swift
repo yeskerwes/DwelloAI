@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @StateObject private var authViewModel = AuthViewModel(
-        authService: MockAuthService()
-    )
-    
+    @EnvironmentObject private var authViewModel: AuthViewModel
+
     var body: some View {
         NavigationStack {
             Group {
@@ -29,4 +27,5 @@ struct ProfileView: View {
 
 #Preview {
     ProfileView()
+        .environmentObject(AuthViewModel(authService: MockAuthService()))
 }

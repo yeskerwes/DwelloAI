@@ -1,7 +1,178 @@
-/* 
-  Localizable.strings
-  DwelloAI
+/* Localizable.strings — Русский */
 
-  Created by Bakdaulet Yeskermes on 13.05.2026.
-  
-*/
+// Dynamic / Format
+"%d rooms"  = "%d комнат";
+
+// AI Suggested prompts
+"Apartment in Almaty under 30M"         = "Квартира в Алматы до 30 млн";
+"House in Astana for a family"          = "Дом в Астане для семьи";
+"Rental apartment in Shymkent"          = "Аренда квартиры в Шымкенте";
+"2-room apartment near the centre"      = "2-комнатная квартира рядом с центром";
+"Affordable apartment for a student"    = "Недорогая квартира для студента";
+
+// Tab Bar
+"Home"      = "Главная";
+"Favorite"  = "Избранное";
+"Chat"      = "Чаты";
+"Profile"   = "Профиль";
+
+// Profile
+"Appearance"         = "Внешний вид";
+"Change Theme"       = "Изменить тему";
+"Language"           = "Язык";
+"System"             = "Системная";
+"Light"              = "Светлая";
+"Dark"               = "Тёмная";
+"English"            = "Английский";
+"Russian"            = "Русский";
+"Log In"             = "Войти";
+"Log Out"            = "Выйти";
+"Edit Profile"       = "Редактировать профиль";
+"My Listings"        = "Мои объявления";
+"Help Center"        = "Центр помощи";
+"About App"          = "О приложении";
+"Notifications"      = "Уведомления";
+"Favorites"          = "Избранное";
+"Settings"           = "Настройки";
+"Coming Soon"        = "Скоро";
+"Login"              = "Вход";
+"Register"           = "Регистрация";
+
+// Auth
+"You are not logged in"     = "Вы не вошли в аккаунт";
+"Log in to save favorite properties, publish your own listings, and use the AI assistant." = "Войдите, чтобы сохранять объявления, публиковать свои и использовать ИИ ассистента.";
+"Create Account"            = "Создать аккаунт";
+"Create account"            = "Создать аккаунт";
+"Welcome back"              = "С возвращением";
+"Log in to continue using DwelloAI." = "Войдите, чтобы продолжить использовать DwelloAI.";
+"Email"                     = "Эл. почта";
+"Password"                  = "Пароль";
+"Test account: test@gmail.com / 123456" = "Тестовый аккаунт: test@gmail.com / 123456";
+"Join DwelloAI and manage your property search easily." = "Присоединяйтесь к DwelloAI и найдите жильё легко.";
+"Full name"                 = "Полное имя";
+"Confirm password"          = "Подтвердите пароль";
+
+// AI Chat
+"AI Assistant"              = "ИИ Ассистент";
+"Try asking:"               = "Попробуйте спросить:";
+"Type your request..."      = "Введите запрос...";
+"Hello! I'm here to help you find the perfect property. What are you looking for?" = "Здравствуйте! Я помогу вам найти подходящее жильё. Что вы ищете?";
+"I found some great matches for you. Showing results now." = "Я нашёл подходящие варианты. Сейчас покажу результаты.";
+
+// Search & Results
+"Search results"            = "Результаты поиска";
+"No properties found"       = "Объекты не найдены";
+"Try changing your filters" = "Попробуйте изменить фильтры";
+"Search"                    = "Найти";
+
+// Chats
+"Chats"                          = "Чаты";
+"AI assistant and conversations" = "ИИ ассистент и переписки";
+"Search chats"                   = "Поиск чатов";
+"DwelloAI Assistant"             = "DwelloAI Ассистент";
+"This chat can help you find properties, compare prices, and choose the best option." = "Этот чат поможет найти объекты, сравнить цены и выбрать лучший вариант.";
+"Message"                        = "Сообщение";
+"I will analyze your request and suggest suitable properties soon." = "Я анализирую ваш запрос и скоро предложу подходящие варианты.";
+
+// Home
+"Find your dream Home"   = "Найдите дом мечты";
+"New apartments"         = "Новые квартиры";
+"with special offers, mortgages,\nand flexible purchase options" = "со спецпредложениями, ипотекой\nи гибкими условиями покупки";
+"Hot deals in your city" = "Лучшие предложения в вашем городе";
+
+// Filters
+"Advanced filter"               = "Фильтр";
+"Select region, City, Country"  = "Регион, город, страна";
+"Price"                         = "Цена";
+"Rooms"                         = "Комнаты";
+"Square"                        = "Площадь";
+"Buy"                           = "Купить";
+"Rent"                          = "Арендовать";
+"Apartments"                    = "Квартиры";
+"House"                         = "Дом";
+"Office"                        = "Офис";
+"Select city"                   = "Выбрать город";
+"Select price"                  = "Выбрать цену";
+"Select rooms"                  = "Выбрать комнаты";
+"Select square"                 = "Выбрать площадь";
+"Property type"                 = "Тип объекта";
+"All cities"                    = "Все города";
+"Almaty"                        = "Алматы";
+"Astana"                        = "Астана";
+"Shymkent"                      = "Шымкент";
+"Any price"                     = "Любая цена";
+"Up to 30M ₸"                  = "До 30 млн ₸";
+"Up to 50M ₸"                  = "До 50 млн ₸";
+"Up to 80M ₸"                  = "До 80 млн ₸";
+"Up to 120M ₸"                 = "До 120 млн ₸";
+"Up to 200M ₸"                 = "До 200 млн ₸";
+"Up to 300K ₸"                 = "До 300 тыс ₸";
+"Up to 400K ₸"                 = "До 400 тыс ₸";
+"Up to 500K ₸"                 = "До 500 тыс ₸";
+"Up to 700K ₸"                 = "До 700 тыс ₸";
+"Any rooms"                     = "Любое кол-во";
+"Any square"                    = "Любая площадь";
+"From 40 m²"                   = "От 40 м²";
+"From 60 m²"                   = "От 60 м²";
+"From 80 m²"                   = "От 80 м²";
+"From 120 m²"                  = "От 120 м²";
+"From 160 m²"                  = "От 160 м²";
+"All types"                     = "Все типы";
+
+// Property
+"For Sale"                      = "Продажа";
+"For Rent"                      = "Аренда";
+"Authorization Required"        = "Требуется авторизация";
+"Please log in to add this property to your favorites." = "Войдите, чтобы добавить объект в избранное.";
+"Go to Profile"                 = "Перейти в профиль";
+"per month"                     = "в месяц";
+"total price"                   = "общая стоимость";
+"Property details"              = "Детали объекта";
+"Area"                          = "Площадь";
+"Floor"                         = "Этаж";
+"Description"                   = "Описание";
+"Location"                      = "Расположение";
+"Contact Agent"                 = "Связаться с агентом";
+
+// Add Property
+"What do you want to add?"      = "Что вы хотите добавить?";
+"Sell your property"            = "Продать объект";
+"Rent out your property"        = "Сдать объект";
+"Add for Sale"                  = "Добавить на продажу";
+"Add for Rent"                  = "Добавить в аренду";
+"Fill in required fields"       = "Заполните обязательные поля";
+"Please fill in title, city, address, and price." = "Пожалуйста, заполните название, город, адрес и цену.";
+"Published!"                    = "Опубликовано!";
+"Your listing has been published successfully." = "Ваше объявление успешно опубликовано.";
+"Photos"                        = "Фотографии";
+"Add"                           = "Добавить";
+"Basic Info"                    = "Основная информация";
+"Title (e.g. Modern 2BR Apartment)" = "Название (напр. Современная 2к квартира)";
+"City"                          = "Город";
+"Address"                       = "Адрес";
+"Price (₸)"                    = "Цена (₸)";
+"Property Details"              = "Детали объекта";
+"Type"                          = "Тип";
+"Area m²"                      = "Площадь м²";
+"Total Floors"                  = "Этажность";
+"Describe your property..."     = "Опишите ваш объект...";
+"Publish Listing"               = "Опубликовать";
+
+// My Listings
+"No listings yet"               = "Нет объявлений";
+"Tap the + button to publish your first listing." = "Нажмите кнопку +, чтобы опубликовать первое объявление.";
+"Delete this listing?"          = "Удалить объявление?";
+"Delete"                        = "Удалить";
+"This action cannot be undone." = "Это действие нельзя отменить.";
+
+// Favorites
+"No favorites yet"              = "Избранное пусто";
+"Properties you like will appear here. Tap the heart icon on any listing to save it." = "Сохраняйте понравившиеся объекты, нажав на сердечко в карточке.";
+
+// Common
+"Cancel"    = "Отмена";
+"OK"        = "ОК";
+"Save"      = "Сохранить";
+"Done"      = "Готово";
+"Great!"    = "Отлично!";
+"Send"      = "Отправить";

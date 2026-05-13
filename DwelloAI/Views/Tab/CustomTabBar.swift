@@ -9,7 +9,8 @@ import SwiftUI
 
 struct CustomTabBar: View {
     @Binding var selectedTab: TabItem
-    
+    var onAddTapped: () -> Void
+
     private let accentColor = Color("AccentColor")
     private let inactiveColor = Color.gray
     
@@ -54,7 +55,7 @@ struct CustomTabBar: View {
     
     private var addButton: some View {
         Button {
-            selectedTab = .add
+            onAddTapped()
         } label: {
             ZStack {
                 Circle()

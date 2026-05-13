@@ -27,28 +27,28 @@ struct HomeView: View {
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 0) {
                         headerSection
+                        VStack(spacing: 0) {
+                            HomeSearchCard(
+                                filters: $filters,
+                                onFilterTap: { sheetType in
+                                    activeFilterSheet = sheetType
+                                },
+                                onSearchTap: {
+                                    searchProperties()
+                                }
+                            )
+                            .offset(y: -150)
+                            .padding(.bottom, -150)
 
-                        HomeSearchCard(
-                            filters: $filters,
-                            onFilterTap: { sheetType in
-                                activeFilterSheet = sheetType
-                            },
-                            onSearchTap: {
-                                searchProperties()
-                            }
-                        )
-                        .offset(y: -150)
+                            offerBanner
+                                .padding(.top, 20)
+
+                            hotDealsSection
+                                .padding(.top, 20)
+
+                            Spacer(minLength: 120)
+                        }
                         .padding(.horizontal, 15)
-                        .padding(.bottom, -150)
-
-                        offerBanner
-                            .padding(.horizontal, 15)
-                            .padding(.top, 20)
-
-                        hotDealsSection
-                            .padding(.top, 20)
-
-                        Spacer(minLength: 120)
                     }
                 }
                 .ignoresSafeArea(edges: .top)
@@ -102,7 +102,7 @@ private extension HomeView {
                     .lineLimit(2)
                     .minimumScaleFactor(0.8)
             }
-            .padding(.horizontal, 18)
+            .padding(.horizontal, 15)
             .padding(.top, 80)
         }
         .frame(height: 300)
@@ -145,7 +145,7 @@ private extension HomeView {
                         .font(.system(size: 22, weight: .semibold))
                         .foregroundStyle(.white)
                 }
-                .padding(.horizontal, 18)
+                .padding(.horizontal, 15)
             }
             .frame(width: geo.size.width, height: 150)
             .clipShape(RoundedRectangle(cornerRadius: 18))
@@ -160,7 +160,6 @@ private extension HomeView {
             Text("Hot deals in your city")
                 .font(.custom("Poppins-SemiBold", size: 26))
                 .foregroundStyle(.black.opacity(0.85))
-                .padding(.horizontal, 15)
 
             if viewModel.isLoading {
                 ProgressView()
@@ -170,7 +169,6 @@ private extension HomeView {
                 Text(errorMessage)
                     .font(.custom("Poppins-Regular", size: 14))
                     .foregroundStyle(.red)
-                    .padding(.horizontal, 15)
             } else {
                 LazyVStack(spacing: 16) {
                     ForEach(viewModel.hotDeals) { property in
@@ -178,7 +176,6 @@ private extension HomeView {
                             PropertyDetailView(property: property)
                         } label: {
                             PropertyDealCardView(property: property)
-                                .padding(.horizontal, 15)
                         }
                         .buttonStyle(.plain)
                     }

@@ -72,9 +72,7 @@ struct FavoritePropertyCardView: View {
     }
     
     private var propertyImage: some View {
-        Image(property.imageName)
-            .resizable()
-            .scaledToFill()
+        PropertyImageView(imageName: property.imageName)
             .frame(width: 165, height: 160)
             .clipped()
             .clipShape(RoundedRectangle(cornerRadius: 16))

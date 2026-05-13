@@ -10,13 +10,16 @@ import SwiftUI
 struct PropertyDealCardView: View {
     let property: Property
     
-    @AppStorage("isLoggedIn") private var isLoggedIn: Bool = false
-    
+    @EnvironmentObject private var authViewModel: AuthViewModel
+
     @State private var isFavorite: Bool = false
     @State private var showLoginAlert: Bool = false
-    
+
     private let accentColor = Color("AccentColor")
-    private let favoritesService = LocalFavoritesService()
+
+    private var favoritesService: LocalFavoritesService {
+        LocalFavoritesService(userID: authViewModel.currentUser?.id)
+    }
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
@@ -91,16 +94,14 @@ private extension PropertyDealCardView {
             .padding(.vertical, 16)
         }
         .padding(14)
-        .frame(height: 190)
+        .frame(maxWidth: .infinity, minHeight: 190)
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 18))
     }
     
     var propertyImage: some View {
         ZStack(alignment: .bottomTrailing) {
-            Image(property.imageName)
-                .resizable()
-                .scaledToFill()
+            PropertyImageView(imageName: property.imageName)
                 .frame(width: 165, height: 160)
                 .clipped()
                 .clipShape(RoundedRectangle(cornerRadius: 16))
@@ -144,7 +145,7 @@ private extension PropertyDealCardView {
 
 private extension PropertyDealCardView {
     func handleFavoriteTap() {
-        if isLoggedIn {
+        if authViewModel.isLoggedIn {
             favoritesService.toggleFavorite(propertyID: property.id)
             isFavorite = favoritesService.isFavorite(propertyID: property.id)
         } else {
@@ -191,4 +192,5 @@ private extension PropertyDealCardView {
         .padding()
         .background(Color(.systemGray6))
     }
+    .environmentObject(AuthViewModel(authService: MockAuthService()))
 }

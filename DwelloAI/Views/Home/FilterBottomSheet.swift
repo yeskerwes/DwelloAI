@@ -34,7 +34,7 @@ struct FilterBottomSheet: View {
 private extension FilterBottomSheet {
     var header: some View {
         HStack {
-            Text(type.title)
+            Text(LocalizedStringKey(type.title))
                 .font(.custom("Poppins-SemiBold", size: 20))
                 .foregroundStyle(.black)
 
@@ -120,7 +120,7 @@ private extension FilterBottomSheet {
 
             ForEach(1...6, id: \.self) { room in
                 optionButton(
-                    title: "\(room) rooms",
+                    title: String(format: NSLocalizedString("%d rooms", comment: ""), room),
                     isSelected: filters.selectedRooms == room
                 ) {
                     filters.selectedRooms = room
@@ -188,7 +188,7 @@ private extension FilterBottomSheet {
             dismiss()
         } label: {
             HStack {
-                Text(title)
+                Text(LocalizedStringKey(title))
                     .font(.custom("Poppins-Medium", size: 16))
                     .foregroundStyle(.black)
 

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SearchResultsView: View {
     let properties: [Property]
+    var query: String? = nil
 
     var body: some View {
         ZStack {

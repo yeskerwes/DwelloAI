@@ -14,18 +14,13 @@ enum TabItem: CaseIterable {
     case chat
     case profile
     
-    var title: String {
+    var title: LocalizedStringKey {
         switch self {
-        case .home:
-            return "Home"
-        case .favorite:
-            return "Favorite"
-        case .add:
-            return ""
-        case .chat:
-            return "Chat"
-        case .profile:
-            return "Profile"
+        case .home:     return "Home"
+        case .favorite: return "Favorite"
+        case .add:      return ""
+        case .chat:     return "Chat"
+        case .profile:  return "Profile"
         }
     }
     

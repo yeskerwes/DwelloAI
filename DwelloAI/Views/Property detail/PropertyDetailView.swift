@@ -10,13 +10,16 @@ import SwiftUI
 struct PropertyDetailView: View {
     let property: Property
     
-    @AppStorage("isLoggedIn") private var isLoggedIn: Bool = false
-    
+    @EnvironmentObject private var authViewModel: AuthViewModel
+
     @State private var isFavorite: Bool = false
     @State private var showLoginAlert: Bool = false
-    
+
     private let accentColor = Color("AccentColor")
-    private let favoritesService = LocalFavoritesService()
+
+    private var favoritesService: LocalFavoritesService {
+        LocalFavoritesService(userID: authViewModel.currentUser?.id)
+    }
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -65,9 +68,7 @@ struct PropertyDetailView: View {
 private extension PropertyDetailView {
     var imageSection: some View {
         ZStack(alignment: .bottomLeading) {
-            Image(property.imageName)
-                .resizable()
-                .scaledToFill()
+            PropertyImageView(imageName: property.imageName)
                 .frame(height: 230)
                 .frame(maxWidth: .infinity)
                 .clipped()
@@ -278,7 +279,7 @@ private extension PropertyDetailView {
 
 private extension PropertyDetailView {
     func handleFavoriteTap() {
-        if isLoggedIn {
+        if authViewModel.isLoggedIn {
             favoritesService.toggleFavorite(propertyID: property.id)
             isFavorite = favoritesService.isFavorite(propertyID: property.id)
         } else {
@@ -323,4 +324,5 @@ private extension PropertyDetailView {
             )
         )
     }
+    .environmentObject(AuthViewModel(authService: MockAuthService()))
 }

@@ -1,0 +1,178 @@
+/* Localizable.strings — English */
+
+// Dynamic / Format
+"%d rooms"  = "%d rooms";
+
+// AI Suggested prompts
+"Apartment in Almaty under 30M"         = "Apartment in Almaty under 30M";
+"House in Astana for a family"          = "House in Astana for a family";
+"Rental apartment in Shymkent"          = "Rental apartment in Shymkent";
+"2-room apartment near the centre"      = "2-room apartment near the centre";
+"Affordable apartment for a student"    = "Affordable apartment for a student";
+
+// Tab Bar
+"Home"      = "Home";
+"Favorite"  = "Favorite";
+"Chat"      = "Chat";
+"Profile"   = "Profile";
+
+// Profile
+"Appearance"         = "Appearance";
+"Change Theme"       = "Change Theme";
+"Language"           = "Language";
+"System"             = "System";
+"Light"              = "Light";
+"Dark"               = "Dark";
+"English"            = "English";
+"Russian"            = "Russian";
+"Log In"             = "Log In";
+"Log Out"            = "Log Out";
+"Edit Profile"       = "Edit Profile";
+"My Listings"        = "My Listings";
+"Help Center"        = "Help Center";
+"About App"          = "About App";
+"Notifications"      = "Notifications";
+"Favorites"          = "Favorites";
+"Settings"           = "Settings";
+"Coming Soon"        = "Coming soon";
+"Login"              = "Login";
+"Register"           = "Register";
+
+// Auth
+"You are not logged in"     = "You are not logged in";
+"Log in to save favorite properties, publish your own listings, and use the AI assistant." = "Log in to save favorite properties, publish your own listings, and use the AI assistant.";
+"Create Account"            = "Create Account";
+"Create account"            = "Create account";
+"Welcome back"              = "Welcome back";
+"Log in to continue using DwelloAI." = "Log in to continue using DwelloAI.";
+"Email"                     = "Email";
+"Password"                  = "Password";
+"Test account: test@gmail.com / 123456" = "Test account: test@gmail.com / 123456";
+"Join DwelloAI and manage your property search easily." = "Join DwelloAI and manage your property search easily.";
+"Full name"                 = "Full name";
+"Confirm password"          = "Confirm password";
+
+// AI Chat
+"AI Assistant"              = "AI Assistant";
+"Try asking:"               = "Try asking:";
+"Type your request..."      = "Type your request...";
+"Hello! I'm here to help you find the perfect property. What are you looking for?" = "Hello! I'm here to help you find the perfect property. What are you looking for?";
+"I found some great matches for you. Showing results now." = "I found some great matches for you. Showing results now.";
+
+// Search & Results
+"Search results"            = "Search results";
+"No properties found"       = "No properties found";
+"Try changing your filters" = "Try changing your filters";
+"Search"                    = "Search";
+
+// Chats
+"Chats"                          = "Chats";
+"AI assistant and conversations" = "AI assistant and conversations";
+"Search chats"                   = "Search chats";
+"DwelloAI Assistant"             = "DwelloAI Assistant";
+"This chat can help you find properties, compare prices, and choose the best option." = "This chat can help you find properties, compare prices, and choose the best option.";
+"Message"                        = "Message";
+"I will analyze your request and suggest suitable properties soon." = "I will analyze your request and suggest suitable properties soon.";
+
+// Home
+"Find your dream Home"   = "Find your dream Home";
+"New apartments"         = "New apartments";
+"with special offers, mortgages,\nand flexible purchase options" = "with special offers, mortgages,\nand flexible purchase options";
+"Hot deals in your city" = "Hot deals in your city";
+
+// Filters
+"Advanced filter"               = "Advanced filter";
+"Select region, City, Country"  = "Select region, City, Country";
+"Price"                         = "Price";
+"Rooms"                         = "Rooms";
+"Square"                        = "Square";
+"Buy"                           = "Buy";
+"Rent"                          = "Rent";
+"Apartments"                    = "Apartments";
+"House"                         = "House";
+"Office"                        = "Office";
+"Select city"                   = "Select city";
+"Select price"                  = "Select price";
+"Select rooms"                  = "Select rooms";
+"Select square"                 = "Select square";
+"Property type"                 = "Property type";
+"All cities"                    = "All cities";
+"Almaty"                        = "Almaty";
+"Astana"                        = "Astana";
+"Shymkent"                      = "Shymkent";
+"Any price"                     = "Any price";
+"Up to 30M ₸"                  = "Up to 30M ₸";
+"Up to 50M ₸"                  = "Up to 50M ₸";
+"Up to 80M ₸"                  = "Up to 80M ₸";
+"Up to 120M ₸"                 = "Up to 120M ₸";
+"Up to 200M ₸"                 = "Up to 200M ₸";
+"Up to 300K ₸"                 = "Up to 300K ₸";
+"Up to 400K ₸"                 = "Up to 400K ₸";
+"Up to 500K ₸"                 = "Up to 500K ₸";
+"Up to 700K ₸"                 = "Up to 700K ₸";
+"Any rooms"                     = "Any rooms";
+"Any square"                    = "Any square";
+"From 40 m²"                   = "From 40 m²";
+"From 60 m²"                   = "From 60 m²";
+"From 80 m²"                   = "From 80 m²";
+"From 120 m²"                  = "From 120 m²";
+"From 160 m²"                  = "From 160 m²";
+"All types"                     = "All types";
+
+// Property
+"For Sale"                      = "For Sale";
+"For Rent"                      = "For Rent";
+"Authorization Required"        = "Authorization Required";
+"Please log in to add this property to your favorites." = "Please log in to add this property to your favorites.";
+"Go to Profile"                 = "Go to Profile";
+"per month"                     = "per month";
+"total price"                   = "total price";
+"Property details"              = "Property details";
+"Area"                          = "Area";
+"Floor"                         = "Floor";
+"Description"                   = "Description";
+"Location"                      = "Location";
+"Contact Agent"                 = "Contact Agent";
+
+// Add Property
+"What do you want to add?"      = "What do you want to add?";
+"Sell your property"            = "Sell your property";
+"Rent out your property"        = "Rent out your property";
+"Add for Sale"                  = "Add for Sale";
+"Add for Rent"                  = "Add for Rent";
+"Fill in required fields"       = "Fill in required fields";
+"Please fill in title, city, address, and price." = "Please fill in title, city, address, and price.";
+"Published!"                    = "Published!";
+"Your listing has been published successfully." = "Your listing has been published successfully.";
+"Photos"                        = "Photos";
+"Add"                           = "Add";
+"Basic Info"                    = "Basic Info";
+"Title (e.g. Modern 2BR Apartment)" = "Title (e.g. Modern 2BR Apartment)";
+"City"                          = "City";
+"Address"                       = "Address";
+"Price (₸)"                    = "Price (₸)";
+"Property Details"              = "Property Details";
+"Type"                          = "Type";
+"Area m²"                      = "Area m²";
+"Total Floors"                  = "Total Floors";
+"Describe your property..."     = "Describe your property...";
+"Publish Listing"               = "Publish Listing";
+
+// My Listings
+"No listings yet"               = "No listings yet";
+"Tap the + button to publish your first listing." = "Tap the + button to publish your first listing.";
+"Delete this listing?"          = "Delete this listing?";
+"Delete"                        = "Delete";
+"This action cannot be undone." = "This action cannot be undone.";
+
+// Favorites
+"No favorites yet"              = "No favorites yet";
+"Properties you like will appear here. Tap the heart icon on any listing to save it." = "Properties you like will appear here. Tap the heart icon on any listing to save it.";
+
+// Common
+"Cancel"    = "Cancel";
+"OK"        = "OK";
+"Save"      = "Save";
+"Done"      = "Done";
+"Great!"    = "Great!";
+"Send"      = "Send";

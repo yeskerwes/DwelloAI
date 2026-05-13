@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChatsView: View {
+    @EnvironmentObject private var authViewModel: AuthViewModel
     @State private var searchText = ""
 
     private var filteredChats: [ChatThread] {
@@ -34,43 +35,53 @@ struct ChatsView: View {
                 Color(.systemGray6)
                     .ignoresSafeArea()
 
-                VStack(spacing: 0) {
-                    header
-
-                    searchBar
-                        .padding(.horizontal, 15)
-                        .padding(.top, 14)
-
-                    ScrollView(showsIndicators: false) {
-                        LazyVStack(spacing: 12) {
-                            ForEach(filteredChats) { chat in
-                                NavigationLink {
-                                    ChatDetailView(thread: chat)
-                                } label: {
-                                    ChatRowView(chat: chat)
-                                }
-                                .buttonStyle(.plain)
-                            }
-                        }
-                        .padding(.horizontal, 15)
-                        .padding(.top, 18)
-                        .padding(.bottom, 120)
-                    }
+                if authViewModel.isLoggedIn {
+                    chatsContent
+                } else {
+                    LoginRequiredView(authViewModel: authViewModel)
                 }
             }
+            .navigationTitle("Chats")
+            .navigationBarTitleDisplayMode(.large)
             .navigationBarBackButtonHidden(true)
         }
     }
 }
 
 private extension ChatsView {
+    var chatsContent: some View {
+        VStack(spacing: 0) {
+            header
+
+            searchBar
+                .padding(.horizontal, 15)
+                .padding(.top, 14)
+
+            ScrollView(showsIndicators: false) {
+                LazyVStack(spacing: 12) {
+                    ForEach(filteredChats) { chat in
+                        NavigationLink {
+                            if chat.participantType == .ai {
+                                AIChatView()
+                            } else {
+                                ChatDetailView(thread: chat)
+                            }
+                        } label: {
+                            ChatRowView(chat: chat)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+                .padding(.horizontal, 15)
+                .padding(.top, 18)
+                .padding(.bottom, 120)
+            }
+        }
+    }
+
     var header: some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
-                Text("Chats")
-                    .font(.custom("Poppins-SemiBold", size: 28))
-                    .foregroundStyle(.black)
-
                 Text("AI assistant and conversations")
                     .font(.custom("Poppins-Regular", size: 14))
                     .foregroundStyle(.gray)
