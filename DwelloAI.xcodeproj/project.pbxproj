@@ -6,8 +6,27 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		AA0000072F840EA00062B007 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 007ABB1A2F840EA00062B02D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 007ABB212F840EA00062B02D;
+			remoteInfo = DwelloAI;
+		};
+		BB0000072F840EA00062B007 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 007ABB1A2F840EA00062B02D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 007ABB212F840EA00062B02D;
+			remoteInfo = DwelloAI;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		007ABB222F840EA00062B02D /* DwelloAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DwelloAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA0000012F840EA00062B001 /* DwelloAITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DwelloAITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB0000012F840EA00062B001 /* DwelloAIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DwelloAIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -29,10 +48,34 @@
 			path = DwelloAI;
 			sourceTree = "<group>";
 		};
+		AA0000022F840EA00062B002 /* DwelloAITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = DwelloAITests;
+			sourceTree = "<group>";
+		};
+		BB0000022F840EA00062B002 /* DwelloAIUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = DwelloAIUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		007ABB1F2F840EA00062B02D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA0000042F840EA00062B004 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB0000042F840EA00062B004 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -46,6 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				007ABB242F840EA00062B02D /* DwelloAI */,
+				AA0000022F840EA00062B002 /* DwelloAITests */,
+				BB0000022F840EA00062B002 /* DwelloAIUITests */,
 				007ABB232F840EA00062B02D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				007ABB222F840EA00062B02D /* DwelloAI.app */,
+				AA0000012F840EA00062B001 /* DwelloAITests.xctest */,
+				BB0000012F840EA00062B001 /* DwelloAIUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,6 +130,52 @@
 			productReference = 007ABB222F840EA00062B02D /* DwelloAI.app */;
 			productType = "com.apple.product-type.application";
 		};
+		AA0000062F840EA00062B006 /* DwelloAITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA00000B2F840EA00062B00B /* Build configuration list for PBXNativeTarget "DwelloAITests" */;
+			buildPhases = (
+				AA0000032F840EA00062B003 /* Sources */,
+				AA0000042F840EA00062B004 /* Frameworks */,
+				AA0000052F840EA00062B005 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA0000082F840EA00062B008 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AA0000022F840EA00062B002 /* DwelloAITests */,
+			);
+			name = DwelloAITests;
+			packageProductDependencies = (
+			);
+			productName = DwelloAITests;
+			productReference = AA0000012F840EA00062B001 /* DwelloAITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BB0000062F840EA00062B006 /* DwelloAIUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB00000B2F840EA00062B00B /* Build configuration list for PBXNativeTarget "DwelloAIUITests" */;
+			buildPhases = (
+				BB0000032F840EA00062B003 /* Sources */,
+				BB0000042F840EA00062B004 /* Frameworks */,
+				BB0000052F840EA00062B005 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BB0000082F840EA00062B008 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				BB0000022F840EA00062B002 /* DwelloAIUITests */,
+			);
+			name = DwelloAIUITests;
+			packageProductDependencies = (
+			);
+			productName = DwelloAIUITests;
+			productReference = BB0000012F840EA00062B001 /* DwelloAIUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -95,6 +188,14 @@
 				TargetAttributes = {
 					007ABB212F840EA00062B02D = {
 						CreatedOnToolsVersion = 26.0.1;
+					};
+					AA0000062F840EA00062B006 = {
+						CreatedOnToolsVersion = 26.0.1;
+						TestTargetID = 007ABB212F840EA00062B02D;
+					};
+					BB0000062F840EA00062B006 = {
+						CreatedOnToolsVersion = 26.0.1;
+						TestTargetID = 007ABB212F840EA00062B02D;
 					};
 				};
 			};
@@ -114,12 +215,28 @@
 			projectRoot = "";
 			targets = (
 				007ABB212F840EA00062B02D /* DwelloAI */,
+				AA0000062F840EA00062B006 /* DwelloAITests */,
+				BB0000062F840EA00062B006 /* DwelloAIUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		007ABB202F840EA00062B02D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA0000052F840EA00062B005 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB0000052F840EA00062B005 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -136,7 +253,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AA0000032F840EA00062B003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB0000032F840EA00062B003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA0000082F840EA00062B008 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 007ABB212F840EA00062B02D /* DwelloAI */;
+			targetProxy = AA0000072F840EA00062B007 /* PBXContainerItemProxy */;
+		};
+		BB0000082F840EA00062B008 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 007ABB212F840EA00062B02D /* DwelloAI */;
+			targetProxy = BB0000072F840EA00062B007 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		007ABB2B2F840EA20062B02D /* Debug */ = {
@@ -328,6 +472,80 @@
 			};
 			name = Release;
 		};
+		AA0000092F840EA00062B009 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L4938323GV;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = bbx.DwelloAITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DwelloAI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DwelloAI";
+			};
+			name = Debug;
+		};
+		AA00000A2F840EA00062B00A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L4938323GV;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = bbx.DwelloAITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DwelloAI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DwelloAI";
+			};
+			name = Release;
+		};
+		BB0000092F840EA00062B009 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L4938323GV;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = bbx.DwelloAIUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DwelloAI;
+			};
+			name = Debug;
+		};
+		BB00000A2F840EA00062B00A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L4938323GV;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = bbx.DwelloAIUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DwelloAI;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -345,6 +563,24 @@
 			buildConfigurations = (
 				007ABB2E2F840EA20062B02D /* Debug */,
 				007ABB2F2F840EA20062B02D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA00000B2F840EA00062B00B /* Build configuration list for PBXNativeTarget "DwelloAITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000092F840EA00062B009 /* Debug */,
+				AA00000A2F840EA00062B00A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB00000B2F840EA00062B00B /* Build configuration list for PBXNativeTarget "DwelloAIUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB0000092F840EA00062B009 /* Debug */,
+				BB00000A2F840EA00062B00A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

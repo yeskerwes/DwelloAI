@@ -50,8 +50,8 @@ final class MockAuthService: AuthServiceProtocol {
                 return
             }
             
-            let testEmail = "test@gmail.com"
-            let testPassword = "123456"
+            let testEmail = "test"
+            let testPassword = "1234"
             
             let savedEmail = UserDefaults.standard.string(forKey: self.savedEmailKey)
             let savedPassword = UserDefaults.standard.string(forKey: self.savedPasswordKey)

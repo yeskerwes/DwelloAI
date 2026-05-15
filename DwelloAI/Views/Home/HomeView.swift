@@ -18,40 +18,56 @@ struct HomeView: View {
         propertyService: LocalPropertyService()
     )
 
+    private let horizontalPadding: CGFloat = 15
+
     var body: some View {
         NavigationStack {
-            ZStack {
-                Color(.systemGray6)
-                    .ignoresSafeArea()
+            GeometryReader { geo in
+                let pageWidth = safeDimension(geo.size.width)
+                let contentWidth = safeDimension(pageWidth - horizontalPadding * 2)
 
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 0) {
-                        headerSection
+                ZStack {
+                    Color(.systemGray6)
+                        .ignoresSafeArea()
+
+                    ScrollView(.vertical, showsIndicators: false) {
                         VStack(spacing: 0) {
-                            HomeSearchCard(
-                                filters: $filters,
-                                onFilterTap: { sheetType in
-                                    activeFilterSheet = sheetType
-                                },
-                                onSearchTap: {
-                                    searchProperties()
-                                }
+                            headerSection(
+                                pageWidth: pageWidth,
+                                contentWidth: contentWidth
                             )
-                            .offset(y: -150)
-                            .padding(.bottom, -150)
 
-                            offerBanner
-                                .padding(.top, 20)
+                            VStack(spacing: 0) {
+                                HomeSearchCard(
+                                    filters: $filters,
+                                    onFilterTap: { sheetType in
+                                        activeFilterSheet = sheetType
+                                    },
+                                    onSearchTap: {
+                                        searchProperties()
+                                    }
+                                )
+                                .frame(width: contentWidth)
+                                .clipped()
+                                .offset(y: -150)
+                                .padding(.bottom, -150)
 
-                            hotDealsSection
-                                .padding(.top, 20)
+                                offerBanner(width: contentWidth)
+                                    .padding(.top, 20)
 
-                            Spacer(minLength: 120)
+                                hotDealsSection
+                                    .frame(width: contentWidth)
+                                    .padding(.top, 20)
+
+                                Spacer(minLength: 120)
+                            }
+                            .frame(width: pageWidth)
                         }
-                        .padding(.horizontal, 15)
+                        .frame(width: pageWidth)
                     }
+                    .frame(width: pageWidth)
+                    .ignoresSafeArea(edges: .top)
                 }
-                .ignoresSafeArea(edges: .top)
             }
             .onAppear {
                 viewModel.loadProperties()
@@ -67,16 +83,23 @@ struct HomeView: View {
             }
         }
     }
+
+    private func safeDimension(_ value: CGFloat) -> CGFloat {
+        guard value.isFinite, value > 1 else {
+            return 1
+        }
+
+        return value
+    }
 }
 
 private extension HomeView {
-    var headerSection: some View {
-        ZStack(alignment: .topLeading) {
+    func headerSection(pageWidth: CGFloat, contentWidth: CGFloat) -> some View {
+        ZStack(alignment: .top) {
             Image("home-header")
                 .resizable()
                 .scaledToFill()
-                .frame(height: 300)
-                .frame(maxWidth: .infinity)
+                .frame(width: pageWidth, height: 300)
                 .clipped()
                 .overlay(
                     Color("AccentColor")
@@ -95,6 +118,7 @@ private extension HomeView {
                 Text("Hello Bakdaulet!")
                     .font(.custom("Poppins-Medium", size: 16))
                     .foregroundStyle(.orange)
+                    .lineLimit(1)
 
                 Text("Find your dream Home")
                     .font(.custom("Poppins-SemiBold", size: 22))
@@ -102,55 +126,53 @@ private extension HomeView {
                     .lineLimit(2)
                     .minimumScaleFactor(0.8)
             }
-            .padding(.horizontal, 15)
+            .frame(width: contentWidth, alignment: .leading)
             .padding(.top, 80)
         }
-        .frame(height: 300)
+        .frame(width: pageWidth, height: 300)
     }
 }
 
 private extension HomeView {
-    var offerBanner: some View {
-        GeometryReader { geo in
-            ZStack {
-                Image("new-apartments")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: geo.size.width, height: 150)
-                    .clipped()
-                    .overlay(
-                        Color("AccentColor")
-                            .opacity(0.78)
-                    )
+    func offerBanner(width: CGFloat) -> some View {
+        ZStack {
+            Image("new-apartments")
+                .resizable()
+                .scaledToFill()
+                .frame(width: width, height: 150)
+                .clipped()
+                .overlay(
+                    Color("AccentColor")
+                        .opacity(0.78)
+                )
 
-                HStack {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text("New apartments")
-                            .font(.custom("Poppins-SemiBold", size: 20))
-                            .foregroundStyle(.white)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.8)
-
-                        Text("with special offers, mortgages,\nand flexible purchase options")
-                            .font(.custom("Poppins-Regular", size: 14))
-                            .foregroundStyle(Color.orange)
-                            .lineSpacing(2)
-                            .lineLimit(2)
-                            .minimumScaleFactor(0.8)
-                    }
-
-                    Spacer()
-
-                    Image(systemName: "chevron.right")
-                        .font(.system(size: 22, weight: .semibold))
+            HStack(spacing: 12) {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("New apartments")
+                        .font(.custom("Poppins-SemiBold", size: 20))
                         .foregroundStyle(.white)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
+
+                    Text("with special offers, mortgages,\nand flexible purchase options")
+                        .font(.custom("Poppins-Regular", size: 14))
+                        .foregroundStyle(.orange)
+                        .lineSpacing(2)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.8)
                 }
-                .padding(.horizontal, 15)
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 22, weight: .semibold))
+                    .foregroundStyle(.white)
             }
-            .frame(width: geo.size.width, height: 150)
-            .clipShape(RoundedRectangle(cornerRadius: 18))
+            .padding(.horizontal, 18)
+            .frame(width: width, height: 150)
         }
-        .frame(height: 150)
+        .frame(width: width, height: 150)
+        .clipShape(RoundedRectangle(cornerRadius: 18))
+        .clipped()
     }
 }
 
@@ -160,15 +182,19 @@ private extension HomeView {
             Text("Hot deals in your city")
                 .font(.custom("Poppins-SemiBold", size: 26))
                 .foregroundStyle(.black.opacity(0.85))
+                .frame(maxWidth: .infinity, alignment: .leading)
 
             if viewModel.isLoading {
                 ProgressView()
                     .frame(maxWidth: .infinity)
                     .padding(.top, 30)
+
             } else if let errorMessage = viewModel.errorMessage {
                 Text(errorMessage)
                     .font(.custom("Poppins-Regular", size: 14))
                     .foregroundStyle(.red)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
             } else {
                 LazyVStack(spacing: 16) {
                     ForEach(viewModel.hotDeals) { property in
@@ -176,12 +202,15 @@ private extension HomeView {
                             PropertyDetailView(property: property)
                         } label: {
                             PropertyDealCardView(property: property)
+                                .frame(maxWidth: .infinity)
                         }
                         .buttonStyle(.plain)
                     }
                 }
+                .frame(maxWidth: .infinity)
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 

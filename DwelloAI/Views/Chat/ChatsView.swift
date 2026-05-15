@@ -74,7 +74,7 @@ private extension ChatsView {
                 }
                 .padding(.horizontal, 15)
                 .padding(.top, 18)
-                .padding(.bottom, 120)
+                .padding(.bottom, 50)
             }
         }
     }

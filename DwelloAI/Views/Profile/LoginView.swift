@@ -70,11 +70,6 @@ struct LoginView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                 }
             }
-            
-            Text("Test account: test@gmail.com / 123456")
-                .font(.custom("Poppins-Regular", size: 12))
-                .foregroundStyle(.gray)
-            
             Spacer()
         }
         .padding(.horizontal, 15)
