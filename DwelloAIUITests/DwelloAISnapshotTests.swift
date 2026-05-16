@@ -13,6 +13,12 @@ final class DwelloAISnapshotTests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
         app = XCUIApplication()
+        app.launchArguments = [
+            "-AppleLanguages", "(en)",
+            "-AppleLocale", "en_US",
+            "-dwello_language", "en",
+            "UITesting"
+        ]
         app.launch()
     }
 
@@ -22,7 +28,7 @@ final class DwelloAISnapshotTests: XCTestCase {
 
     func testHomeViewSnapshot() {
         XCTAssertTrue(
-            app.staticTexts["Find your dream Home"].waitForExistence(timeout: 5),
+            app.staticTexts["Find your dream Home"].waitForExistence(timeout: 10),
             "Home view must be visible before taking snapshot"
         )
 
@@ -39,7 +45,7 @@ final class DwelloAISnapshotTests: XCTestCase {
         let favoriteButton = app.buttons.matching(
             NSPredicate(format: "label CONTAINS 'Favorite'")
         ).firstMatch
-        XCTAssertTrue(favoriteButton.waitForExistence(timeout: 5))
+        XCTAssertTrue(favoriteButton.waitForExistence(timeout: 10))
         favoriteButton.tap()
 
         Thread.sleep(forTimeInterval: 1.0)

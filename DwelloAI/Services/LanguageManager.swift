@@ -27,7 +27,6 @@ final class LanguageManager: ObservableObject {
         currentLanguage.locale
     }
 
-    /// Active lproj bundle — use this for NSLocalizedString in ViewModels
     private(set) var bundle: Bundle = .main
 
     func set(_ language: AppLanguage) {

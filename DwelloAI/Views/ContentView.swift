@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var showSplash = true
+    @State private var showSplash = !CommandLine.arguments.contains("UITesting")
 
     var body: some View {
         ZStack {
